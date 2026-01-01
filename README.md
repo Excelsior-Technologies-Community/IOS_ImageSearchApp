@@ -254,5 +254,4 @@ By building this project, you learn:
     •    Billing does NOT mean paid usage
     •    This is a real portfolio-level project
     •    Suitable for interviews & GitHub showcase
-
  
