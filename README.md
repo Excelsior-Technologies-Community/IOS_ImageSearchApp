@@ -22,13 +22,15 @@ This project demonstrates **SwiftUI + MVVM**, real-world API integration, and cl
 
 ## 🧠 How the App Works
 
+```
 User selects product image
-↓
+        ↓
 Google Vision API detects product keyword
-↓
+        ↓
 Keyword sent to SerpAPI (Google Shopping)
-↓
+        ↓
 Similar products displayed in UI
+```
 
 ---
 
@@ -48,13 +50,12 @@ Similar products displayed in UI
 - App UI images
 - Website screenshots
 - Text-heavy images
- 
 
-🏗️ Project Folder Structure (Professional)
+---
 
-This is for understanding only.
-Developers should not copy this as code.
+## 🗂️ Project Folder Structure (Professional)
 
+```
 ImageSearchApp
 ├── App
 │   └── ImageSearchAppApp.swift
@@ -76,193 +77,203 @@ ImageSearchApp
 │   └── Assets.xcassets
 └── Supporting Files
     └── Info.plist
+```
 
-This structure follows MVVM + Clean Architecture, commonly used in real production apps.
+This structure follows **MVVM + Clean Architecture**, commonly used in real production apps.
 
-⸻
+---
 
-🔑 API Setup (Step-by-Step Guide)
+## 🔑 API Setup (Step-by-Step Guide)
 
 This project uses two APIs:
-    1.    Google Vision API – Image recognition
-    2.    SerpAPI – Google Shopping product search
 
-👉 Both APIs are FREE to use within their free tiers
-👉 Google asks for billing setup, but FREE usage is guaranteed
-👉 No money is deducted unless free limits are exceeded
+1. **Google Vision API** – Image recognition
+2. **SerpAPI** – Google Shopping product search
 
-🔥 FREE means no charge — billing is only for verification.
+> 👉 Both APIs are **FREE** to use within their free tiers  
+> 👉 Google asks for billing setup, but FREE usage is guaranteed  
+> 👉 No money is deducted unless free limits are exceeded  
+> 🔥 **FREE means no charge** — billing is only for verification
 
-⸻
+---
 
-1️⃣ Google Vision API Setup (Image Recognition)
+### 1️⃣ Google Vision API Setup (Image Recognition)
 
-Step 1: Create Project
-    1.    Go to https://console.cloud.google.com
-    2.    Create a new project named ImageSearchApp
+#### Step 1: Create Project
 
-Step 2: Enable Vision API
-    1.    APIs & Services → Library
-    2.    Search Cloud Vision API
-    3.    Click Enable
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a new project named `ImageSearchApp`
 
-Step 3: Enable Billing (IMPORTANT)
-    •    Google requires billing even for FREE tier
-    •    Free tier: 1000 images/month
-    •    Add card → set budget alert → ₹0
+#### Step 2: Enable Vision API
 
-👉 This API is FREE under free tier
-👉 Billing ≠ Paid usage
+1. Navigate to **APIs & Services → Library**
+2. Search for **Cloud Vision API**
+3. Click **Enable**
 
-Step 4: Create API Key
-    1.    APIs & Services → Credentials
-    2.    Create API Key
-    3.    Copy the key
+#### Step 3: Enable Billing (IMPORTANT)
 
-⸻
+- Google requires billing even for FREE tier
+- **Free tier**: 1000 images/month
+- Add card → set budget alert → ₹0
 
-2️⃣ SerpAPI Setup (Product Search)
+> 👉 This API is **FREE** under free tier  
+> 👉 Billing ≠ Paid usage
 
-Step 1: Create Account
-    •    Visit https://serpapi.com
-    •    Sign up using Google or GitHub
+#### Step 4: Create API Key
 
-Step 2: Get API Key
-    •    Open dashboard
-    •    Copy API key
+1. Navigate to **APIs & Services → Credentials**
+2. Click **Create Credentials → API Key**
+3. Copy the generated key
 
-Free Tier
-    •    100 searches/month
-    •    FREE
-    •    Perfect for learning and demos
+---
 
-⸻
+### 2️⃣ SerpAPI Setup (Product Search)
 
-🔐 Where to Put API Keys
+#### Step 1: Create Account
 
-⛔ Only the code below is copyable
+- Visit [SerpAPI](https://serpapi.com)
+- Sign up using Google or GitHub
 
-Open:
+#### Step 2: Get API Key
 
+- Open your dashboard
+- Copy your API key
+
+**Free Tier:**
+- 100 searches/month
+- **FREE**
+- Perfect for learning and demos
+
+---
+
+## 🔐 Where to Put API Keys
+
+Open the file:
+
+```
 Presentation/Views/ContentView.swift
+```
 
-Replace with your own keys:
+Replace the placeholder values with your own API keys:
 
+```swift
 private let GOOGLE_VISION_API_KEY = "YOUR_GOOGLE_VISION_API_KEY"
 private let SERP_API_KEY = "YOUR_SERPAPI_KEY"
+```
 
-⚠️ Never commit real API keys to public repositories.
+> ⚠️ **Never commit real API keys to public repositories.**
 
-⸻
+---
 
-▶️ How to Run the App
-    1.    Clone the repository
-    2.    Open ImageSearchApp.xcodeproj
-    3.    Paste your API keys
-    4.    Run on simulator or real device
-    5.    Select a real product image
-    6.    View similar products instantly 🎉
+## ▶️ How to Run the App
 
-⸻
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/ImageSearchApp.git
+   cd ImageSearchApp
+   ```
 
-🧩 Code Explanation (Why Each File Exists)
+2. Open `ImageSearchApp.xcodeproj` in Xcode
 
-ContentView.swift
-    •    Entry UI of the app
-    •    Injects API keys into ViewModel
-    •    Observes image selection
-    •    Automatically triggers image search
-    •    Displays product list
-    •    Uses @StateObject to preserve ViewModel lifecycle
+3. Paste your API keys in `ContentView.swift`
 
-⸻
+4. Run on simulator or real device
 
-ProductSearchViewModel.swift
-    •    Business logic layer (MVVM)
-    •    Coordinates Vision API and SerpAPI
-    •    Filters non-product keywords (e.g. Screenshot)
-    •    Publishes UI state using @Published
-    •    Keeps Views clean and testable
+5. Select a real product image
 
-⸻
+6. View similar products instantly 🎉
 
-VisionService.swift
-    •    Handles image recognition
-    •    Converts image to Base64
-    •    Sends request to Google Vision API
-    •    Extracts detected labels as keywords
+---
 
-⸻
+## 🧩 Code Explanation (Why Each File Exists)
 
-ProductSearchService.swift
-    •    Searches products using SerpAPI
-    •    Queries Google Shopping
-    •    Maps API response into domain models
+### `ContentView.swift`
+- Entry UI of the app
+- Injects API keys into ViewModel
+- Observes image selection
+- Automatically triggers image search
+- Displays product list
+- Uses `@StateObject` to preserve ViewModel lifecycle
 
-⸻
+### `ProductSearchViewModel.swift`
+- Business logic layer (MVVM)
+- Coordinates Vision API and SerpAPI
+- Filters non-product keywords (e.g. Screenshot)
+- Publishes UI state using `@Published`
+- Keeps Views clean and testable
 
-Product.swift
-    •    Domain model for product data
-    •    Conforms to Identifiable
-    •    Used directly in SwiftUI lists
+### `VisionService.swift`
+- Handles image recognition
+- Converts image to Base64
+- Sends request to Google Vision API
+- Extracts detected labels as keywords
 
-⸻
+### `ProductSearchService.swift`
+- Searches products using SerpAPI
+- Queries Google Shopping
+- Maps API response into domain models
 
-ImagePicker.swift
-    •    UIKit → SwiftUI bridge
-    •    Uses UIImagePickerController
-    •    Implements Coordinator pattern
-    •    Handles image selection safely
+### `Product.swift`
+- Domain model for product data
+- Conforms to `Identifiable`
+- Used directly in SwiftUI lists
 
-⸻
+### `ImagePicker.swift`
+- UIKit → SwiftUI bridge
+- Uses `UIImagePickerController`
+- Implements Coordinator pattern
+- Handles image selection safely
 
-❗ Common Issues & Fixes
+---
 
-Only shows “Searching image…”
-    •    Billing not enabled for Vision API
+## ⚠️ Common Issues & Fixes
 
-Keyword detected as “Screenshot”
-    •    You selected a screenshot
-    •    Use a real product photo
+| Issue | Solution |
+|-------|----------|
+| Only shows "Searching image…" | Billing not enabled for Vision API |
+| Keyword detected as "Screenshot" | You selected a screenshot – use a real product photo |
+| No products displayed | Invalid SerpAPI key or free quota exceeded |
 
-No products displayed
-    •    Invalid SerpAPI key
-    •    Free quota exceeded
+---
 
-⸻
+## 📱 Requirements
 
-📱 Requirements
-    •    iOS 15+
-    •    Xcode 14+
-    •    Internet connection
+- iOS 15+
+- Xcode 14+
+- Internet connection
 
-⸻
+---
 
-🎯 Learning Outcomes
+## 🎯 Learning Outcomes
 
 By building this project, you learn:
-    •    SwiftUI state management
-    •    MVVM architecture
-    •    API integration
-    •    Image recognition flow
-    •    Async image loading
-    •    Dependency injection
 
-⸻
+- SwiftUI state management
+- MVVM architecture
+- API integration
+- Image recognition flow
+- Async image loading
+- Dependency injection
 
-🚀 Future Improvements
-    •    Camera-only capture
-    •    Grid layout (LazyVGrid)
-    •    Open product link on tap
-    •    Offline CoreML (no APIs)
-    •    Amazon / Flipkart integration
-    •    Price comparison
+---
 
-⸻
+## 🚀 Future Improvements
 
-📌 Final Notes
-    •    APIs used are FREE
-    •    Billing does NOT mean paid usage
-    •    This is a real portfolio-level project
-    •    Suitable for interviews & GitHub showcase
+- [ ] Camera-only capture
+- [ ] Grid layout (LazyVGrid)
+- [ ] Open product link on tap
+- [ ] Offline CoreML (no APIs)
+- [ ] Amazon / Flipkart integration
+- [ ] Price comparison
+
+---
+
+## 📌 Final Notes
+
+- ✅ APIs used are **FREE**
+- ✅ Billing does **NOT** mean paid usage
+- ✅ This is a real portfolio-level project
+- ✅ Suitable for interviews & GitHub showcase
+
+---
  
