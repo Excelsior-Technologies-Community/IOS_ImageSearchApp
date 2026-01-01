@@ -1,168 +1,154 @@
-# 📸 ImageSearchApp
+📸 ImageSearchApp
 
-## Product Image Search using SwiftUI, Google Vision API & SerpAPI
+Product Image Search using SwiftUI, Google Vision API & SerpAPI
 
 ImageSearchApp is a SwiftUI-based iOS application that allows users to select or capture a product image and automatically find similar products online using image recognition and shopping search APIs.
 
-This project demonstrates **SwiftUI + MVVM**, real-world API integration, and clean architecture suitable for learning, interviews, and portfolio showcase.
+This project demonstrates SwiftUI + MVVM, real-world API integration, and clean architecture suitable for learning, interviews, and portfolio showcase.
 
----
+⸻
 
-## ✨ Features
+✨ Features
+    •    📷 Select a product image from gallery
+    •    🧠 Detect product type using image recognition
+    •    🛒 Search similar products from Google Shopping
+    •    🖼 Display product image + title
+    •    ⚡ Fully SwiftUI based
+    •    🧩 Clean MVVM architecture
+    •    📱 iOS 15+ supported
 
-- 📷 Select a product image from gallery
-- 🧠 Detect product type using image recognition
-- 🛒 Search similar products from Google Shopping
-- 🖼 Display product image + title
-- ⚡ Fully SwiftUI based
-- 🧩 Clean MVVM architecture
-- 📱 iOS 15+ supported
+⸻
 
----
-
-## 🧠 How the App Works
+🧠 How the App Works
 
 User selects product image
-↓
+        ↓
 Google Vision API detects product keyword
-↓
+        ↓
 Keyword sent to SerpAPI (Google Shopping)
-↓
+        ↓
 Similar products displayed in UI
 
----
 
-## 📸 What Type of Image Should You Use?
+⸻
 
-### ✅ Recommended (Works Best)
+📸 What Type of Image Should You Use?
 
-- Shoes 👟
-- Mobile phones 📱
-- Watches ⌚
-- Bottles 🧴
-- Headphones 🎧
+✅ Recommended (Works Best)
+    •    Shoes 👟
+    •    Mobile phones 📱
+    •    Watches ⌚
+    •    Bottles 🧴
+    •    Headphones 🎧
 
-### ❌ Avoid These (Will Fail)
-
-- Screenshots
-- App UI images
-- Website screenshots
-- Text-heavy images
+❌ Avoid These (Will Fail)
+    •    Screenshots
+    •    App UI images
+    •    Website screenshots
+    •    Text-heavy images
 
 ⚠️ The image must be a real photo of a physical product, not a screenshot.
 
----
+⸻
 
-## 🏗️ Project Folder Structure (Professional)
+🏗️ Project Folder Structure (Professional)
+
+This is for understanding only.
+Developers should not copy this as code.
 
 ImageSearchApp
-│
 ├── App
 │   └── ImageSearchAppApp.swift
-│
 ├── Presentation
 │   ├── Views
 │   │   └── ContentView.swift
-│   │
 │   └── ViewModels
 │       └── ProductSearchViewModel.swift
-│
 ├── Domain
 │   └── Models
 │       └── Product.swift
-│
 ├── Data
 │   └── Services
 │       ├── VisionService.swift
 │       └── ProductSearchService.swift
-│
 ├── Utilities
 │   └── ImagePicker.swift
-│
 ├── Resources
 │   └── Assets.xcassets
-│
 └── Supporting Files
-└── Info.plist
+    └── Info.plist
 
-This structure follows **MVVM + Clean Architecture**, commonly used in real production apps.
+This structure follows MVVM + Clean Architecture, commonly used in real production apps.
 
----
+⸻
 
-## 🔑 API Setup (Step-by-Step Guide)
+🔑 API Setup (Step-by-Step Guide)
 
 This project uses two APIs:
+    1.    Google Vision API – Image recognition
+    2.    SerpAPI – Google Shopping product search
 
-1. **Google Vision API** – Image recognition  
-2. **SerpAPI** – Google Shopping product search  
+👉 Both APIs are FREE to use within their free tiers
+👉 Google asks for billing setup, but FREE usage is guaranteed
+👉 No money is deducted unless free limits are exceeded
 
-👉 Both APIs are **FREE** to use within their free tiers  
-👉 Google asks for billing setup, but **FREE usage is guaranteed**  
-👉 No money is deducted unless free limits are exceeded  
+🔥 FREE means no charge — billing is only for verification.
 
-🔥 **FREE** means no charge — billing is only for verification.
+⸻
 
----
+1️⃣ Google Vision API Setup (Image Recognition)
 
-## 1️⃣ Google Vision API Setup (Image Recognition)
+Step 1: Create Project
+    1.    Go to https://console.cloud.google.com
+    2.    Create a new project named ImageSearchApp
 
-### Step 1: Create Project
+Step 2: Enable Vision API
+    1.    APIs & Services → Library
+    2.    Search Cloud Vision API
+    3.    Click Enable
 
-1. Go to 👉 https://console.cloud.google.com
-2. Create a new project named **ImageSearchApp**
+Step 3: Enable Billing (IMPORTANT)
+    •    Google requires billing even for FREE tier
+    •    Free tier: 1000 images/month
+    •    Add card → set budget alert → ₹0
 
-### Step 2: Enable Vision API
-
-1. APIs & Services → Library
-2. Search **Cloud Vision API**
-3. Click **Enable**
-
-### Step 3: Enable Billing (IMPORTANT)
-
-- Google requires billing even for **FREE tier**
-- Free tier: **1000 images/month**
-- Add card → set budget alert → ₹0
-
-👉 This API is **FREE** under free tier  
+👉 This API is FREE under free tier
 👉 Billing ≠ Paid usage
 
-### Step 4: Create API Key
+Step 4: Create API Key
+    1.    APIs & Services → Credentials
+    2.    Create API Key
+    3.    Copy the key
 
-1. APIs & Services → Credentials
-2. Create API Key
-3. Copy the key
+⸻
 
----
+2️⃣ SerpAPI Setup (Product Search)
 
-## 2️⃣ SerpAPI Setup (Product Search)
+Step 1: Create Account
+    •    Visit https://serpapi.com
+    •    Sign up using Google or GitHub
 
-### Step 1: Create Account
+Step 2: Get API Key
+    •    Open dashboard
+    •    Copy API key
 
-- Visit 👉 https://serpapi.com
-- Sign up using Google or GitHub
+Free Tier
+    •    100 searches/month
+    •    FREE
+    •    Perfect for learning and demos
 
-### Step 2: Get API Key
+⸻
 
-- Open dashboard
-- Copy API key
+🔐 Where to Put API Keys
 
-### Free Tier
-
-- 100 searches/month
-- **FREE**
-- Perfect for learning and demos
-
----
-
-## 🔐 Where to Put API Keys
+⛔ Only the code below is copyable
 
 Open:
 
 Presentation/Views/ContentView.swift
 
-Replace:
+Replace with your own keys:
 
-```swift
 private let GOOGLE_VISION_API_KEY = "YOUR_GOOGLE_VISION_API_KEY"
 private let SERP_API_KEY = "YOUR_SERPAPI_KEY"
 
@@ -183,36 +169,51 @@ private let SERP_API_KEY = "YOUR_SERPAPI_KEY"
 🧩 Code Explanation (Why Each File Exists)
 
 ContentView.swift
-    •    Main UI screen
-    •    Injects API keys
-    •    Starts image search on image change
-    •    Displays results
-    •    Uses @StateObject to keep ViewModel alive
+    •    Entry UI of the app
+    •    Injects API keys into ViewModel
+    •    Observes image selection
+    •    Automatically triggers image search
+    •    Displays product list
+    •    Uses @StateObject to preserve ViewModel lifecycle
+
+⸻
 
 ProductSearchViewModel.swift
-    •    Business logic layer
+    •    Business logic layer (MVVM)
     •    Coordinates Vision API and SerpAPI
-    •    Filters bad keywords (like Screenshot)
-    •    Exposes UI state using @Published
+    •    Filters non-product keywords (e.g. Screenshot)
+    •    Publishes UI state using @Published
+    •    Keeps Views clean and testable
+
+⸻
 
 VisionService.swift
-    •    Sends image to Google Vision API
+    •    Handles image recognition
     •    Converts image to Base64
-    •    Extracts detected product keywords
+    •    Sends request to Google Vision API
+    •    Extracts detected labels as keywords
+
+⸻
 
 ProductSearchService.swift
-    •    Sends keyword to SerpAPI
-    •    Fetches Google Shopping results
-    •    Maps JSON into Product models
+    •    Searches products using SerpAPI
+    •    Queries Google Shopping
+    •    Maps API response into domain models
+
+⸻
 
 Product.swift
-    •    Represents a product item
-    •    Conforms to Identifiable for SwiftUI lists
+    •    Domain model for product data
+    •    Conforms to Identifiable
+    •    Used directly in SwiftUI lists
+
+⸻
 
 ImagePicker.swift
     •    UIKit → SwiftUI bridge
-    •    Handles image selection
-    •    Uses Coordinator pattern
+    •    Uses UIImagePickerController
+    •    Implements Coordinator pattern
+    •    Handles image selection safely
 
 ⸻
 
@@ -265,5 +266,4 @@ By building this project, you learn:
     •    Billing does NOT mean paid usage
     •    This is a real portfolio-level project
     •    Suitable for interviews & GitHub showcase
-
-
+ 
